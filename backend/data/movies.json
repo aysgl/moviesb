@@ -1,0 +1,104 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Inception",
+      "description": "A thief who enters the dreams of others to steal secrets from their subconscious.",
+      "year": 2010,
+      "director": "Christopher Nolan",
+      "genre": ["Action", "Adventure", "Sci-Fi"],
+      "rating": 8.8,
+      "image": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX700_.jpg"
+    },
+    {
+      "id": 2,
+      "title": "The Dark Knight",
+      "description": "Batman sets out to dismantle the remaining criminal organizations that plague Gotham City after the events of The Dark Knight.",
+      "year": 2008,
+      "director": "Christopher Nolan",
+      "genre": ["Action", "Crime", "Drama"],
+      "rating": 9,
+      "image": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Interstellar",
+      "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+      "year": 2014,
+      "director": "Christopher Nolan",
+      "genre": ["Adventure", "Drama", "Sci-Fi"],
+      "rating": 8.6,
+      "image": "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UY3600_.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Pulp Fiction",
+      "description": "Various interconnected stories about crime, violence, and redemption in Los Angeles.",
+      "year": 1994,
+      "director": "Quentin Tarantino",
+      "genre": ["Crime", "Drama"],
+      "rating": 8.9,
+      "image": "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1055_.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Fight Club",
+      "description": "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into something much, much more.",
+      "year": 1999,
+      "director": "David Fincher",
+      "genre": ["Drama"],
+      "rating": 7.8,
+      "image": "https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1066_.jpg"
+    },
+    {
+      "id": 6,
+      "title": "The Shawshank Redemption",
+      "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "year": 1994,
+      "director": "Frank Darabont",
+      "genre": ["Drama"],
+      "rating": 9.3,
+      "image": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1200_.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Forrest Gump",
+      "description": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
+      "year": 1994,
+      "director": "Robert Zemeckis",
+      "genre": ["Drama", "Romance"],
+      "rating": 8.8,
+      "image": "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX558_.jpg"
+    },
+    {
+      "id": 8,
+      "title": "The Matrix",
+      "description": "A computer hacker learns about the true nature of reality and his role in the war against its controllers.",
+      "year": 1999,
+      "director": "Lana Wachowski, Lilly Wachowski",
+      "genre": ["Action", "Sci-Fi"],
+      "rating": 6.7,
+      "image": "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UY3156_.jpg"
+    },
+    {
+      "id": 9,
+      "title": "The Lord of the Rings: The Return of the King",
+      "description": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+      "year": 2003,
+      "director": "Peter Jackson",
+      "genre": ["Action", "Adventure", "Drama"],
+      "rating": 8.9,
+      "image": "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX800_.jpg"
+    },
+    {
+      "id": 10,
+      "title": "The Godfather",
+      "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+      "year": 1972,
+      "director": "Francis Ford Coppola",
+      "genre": ["Crime", "Drama"],
+      "rating": 5.8,
+      "image": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UY1982_.jpg"
+    }
+  ]
+}
