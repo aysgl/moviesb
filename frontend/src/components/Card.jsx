@@ -9,7 +9,7 @@ const Cards = ({ movie }) => {
     <Link to={`/${movie.id}`} className="group w-full lg:max-w-full lg:flex ">
       <div className="bg-red-400 transition duration-300 ease-in-out hover:bg-white relative flex flex-col justify-between leading-normal h-full">
         <img
-          className="mix-blend-multiply w-full h-full transition duration-300 ease-in-out group-hover:scale-110"
+          className="img mix-blend-multiply w-full h-full transition duration-300 ease-in-out group-hover:scale-110 object-cover"
           src={movie.image}
           alt="Sunset in the mountains"
         />
@@ -25,7 +25,7 @@ const Cards = ({ movie }) => {
         <div className="bg-blue-50 text-blue-700">deneme</div>
         <div className="bg-indigo-50 text-indigo-700">deneme</div> */}
 
-        <div className="bg-white p-4 transition duration-300 ease-in-out group-hover:-translate-y-10">
+        <div className="h-full bg-white p-4 transition duration-300 ease-in-out group-hover:-translate-y-10">
           <div className="mb-8">
             <div className="text-gray-900 font-light text-2xl mb-2">
               {movie.title}
