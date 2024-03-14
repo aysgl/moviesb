@@ -51,8 +51,6 @@ export const fetchDeleteMovie = (id) => async (dispatch) => {
     const response = await axios.delete(
       `http://localhost:8080/api/movies/${id}`
     );
-    console.log("ne geliyor", response.data);
-
     dispatch(deleteMovie(response.data));
   } catch (error) {
     dispatch(setError(error.message));

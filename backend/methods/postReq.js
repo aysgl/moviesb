@@ -5,7 +5,7 @@ const fs = require("fs");
 
 module.exports = async (req, res) => {
   const filePath = path.join(__dirname, "../data/movies.json");
-  if (req.url === "/api/movies") {
+  if (req.url == "/api/movies") {
     let body = await bodyParser(req);
 
     if (

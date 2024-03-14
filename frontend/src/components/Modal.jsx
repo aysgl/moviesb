@@ -1,13 +1,15 @@
 import { useDispatch } from "react-redux";
 import { fetchDeleteMovie } from "../redux/slice/MovieSlice";
+import { useNavigate } from "react-router-dom";
 
 const Modal = ({ movie, close }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  //   useEffect(() => {
-  //     dispatch(fetchDeleteMovie(movie.id));
-  //   }, [dispatch, movie.id]);
-
+  const handleDelete = () => {
+    dispatch(fetchDeleteMovie(movie.id));
+    navigate("/");
+  };
   return (
     <div className="">
       <div className="fixed w-full h-full bg-black bg-opacity-75 right-0 left-0 top-0 bottom-0"></div>
@@ -57,7 +59,7 @@ const Modal = ({ movie, close }) => {
                 <span className="font-bold">"{movie.title}"</span> movie?
               </h3>
               <button
-                onClick={() => dispatch(fetchDeleteMovie(movie.id))}
+                onClick={handleDelete}
                 data-modal-hide="popup-modal"
                 type="button"
                 className="text-white bg-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-600 font-medium  text-sm inline-flex items-center px-5 py-2.5 text-center">
