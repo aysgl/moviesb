@@ -30,27 +30,31 @@ const Detail = () => {
               <div className="flex flex-col justify-between leading-normal h-full">
                 <div
                   className={`text-${randomColor}-700 text-8xl font-light mb-10 col-span-4`}>
-                  {movie.rating}
+                  {movie?.rating}
                 </div>
                 <div className="mb-8 col-span-6">
-                  <div className="font-light text-6xl mb-10">{movie.title}</div>
-                  <p className="text-2xl text-base mb-6">{movie.description}</p>
-                  <p>{movie.year}</p>
+                  <div className="font-light text-6xl mb-10">
+                    {movie?.title}
+                  </div>
+                  <p className="text-2xl text-base mb-6">
+                    {movie?.description}
+                  </p>
+                  <p>{movie?.year}</p>
                 </div>
                 <div className="flex items-center col-span-6">
                   <div className="text-sm">
                     <p className="leading-none mb-10 text-2xl font-light">
                       {movie.director}
                     </p>
-                    <div className="my-2">
-                      {movie.genre?.map((genre, index) => (
+                    {/* <div className="my-2">
+                      {movie?.genre.map((genre, index) => (
                         <span
                           key={index}
                           className={`me-1 mb-1 items-center bg-${randomColor}-50 px-2 py-1 text-xs font-medium text-${randomColor}-700`}>
                           {genre}
                         </span>
                       ))}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className="my-10">
@@ -65,7 +69,7 @@ const Detail = () => {
             <div className="xl:col-span-4 md:col-span-6 col-span-12">
               <img
                 className=" transition duration-300 ease-in-out hover:scale-110"
-                src={movie.image}
+                src={movie?.image}
                 alt=""
               />
             </div>

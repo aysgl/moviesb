@@ -1,7 +1,19 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchPostMovie } from "../redux/slice/MovieSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 const Create = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    title: "",
+    genre: [],
+    rating: "",
+    year: "",
+    director: "",
+    description: "",
+  });
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -9,8 +21,16 @@ const Create = () => {
     const form = new FormData(e.target);
 
     const data = Object.fromEntries(form.entries());
-    console.log(data);
-    dispatch(fetchPostMovie(data));
+
+    const genreArray = data.genre.split(",");
+
+    const newData = {
+      ...data,
+      genre: genreArray,
+    };
+
+    dispatch(fetchPostMovie(newData));
+    navigate("/");
   };
 
   return (
@@ -36,7 +56,7 @@ const Create = () => {
             </label>
             <div className="mt-2">
               <select
-                name="category"
+                name="genre"
                 className="block w-full rounded-md border-0 py-1.5 text-red-600 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-red-600 h-[38px] text-sm">
                 <option>Action</option>
                 <option>Adventure</option>
@@ -68,15 +88,26 @@ const Create = () => {
           </div>
 
           <div className="col-span-2">
-            <label
-              htmlFor="region"
-              className="block text-sm font-medium leading-6 text-gray-200">
+            <label className="block text-sm font-medium leading-6 text-gray-200">
               Year
             </label>
             <div className="mt-2">
               <input
                 type="number"
                 name="year"
+                className="block w-full rounded-md border-0 py-1.5 text-black px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+
+          <div className="col-span-4">
+            <label className="block text-sm font-medium leading-6 text-gray-200">
+              Director
+            </label>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="director"
                 className="block w-full rounded-md border-0 py-1.5 text-black px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -113,16 +144,9 @@ const Create = () => {
                   />
                 </svg>
                 <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                  <label
-                    htmlFor="file-upload"
-                    className="relative cursor-pointer rounded-md bg-white font-semibold text-red-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-red-600 focus-within:ring-offset-2 hover:text-red-500">
+                  <label className="relative cursor-pointer rounded-md bg-white font-semibold text-red-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-red-600 focus-within:ring-offset-2 hover:text-red-500">
                     <span>Upload a file</span>
-                    <input
-                      id="file-upload"
-                      name="file-upload"
-                      type="file"
-                      className="sr-only"
-                    />
+                    <input id="file-upload" type="file" className="sr-only" />
                   </label>
                   <p className="pl-1">or drag and drop</p>
                 </div>
@@ -136,11 +160,13 @@ const Create = () => {
       </div>
 
       <div className="my-6 flex items-center justify-end gap-x-6">
-        <button
-          type="button"
-          className="text-sm font-semibold leading-6 text-gray-200">
-          Cancel
-        </button>
+        <Link to="/">
+          <button
+            type="button"
+            className="text-sm font-semibold leading-6 text-gray-200">
+            Cancel
+          </button>
+        </Link>
         <button
           type="submit"
           className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
