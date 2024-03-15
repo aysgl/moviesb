@@ -32,7 +32,7 @@ const Cards = ({ movie }) => {
           <div className="flex items-center">
             <div className="text-sm">
               <p className="text-gray-900 leading-none">{movie?.director}</p>
-              {/* <div className="my-2">
+              <div className="my-2">
                 {movie.genre &&
                   movie?.genre?.map((genre, index) => {
                     return (
@@ -43,7 +43,7 @@ const Cards = ({ movie }) => {
                       </span>
                     );
                   })}
-              </div> */}
+              </div>
             </div>
           </div>
         </div>

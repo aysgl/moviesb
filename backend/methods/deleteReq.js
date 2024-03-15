@@ -22,7 +22,6 @@ module.exports = (req, res) => {
       res.setHeader("Content-Type", "application/json");
       return res.end(JSON.stringify(data.movies));
     } catch (error) {
-      console.error("Error:", error);
       res.statusCode = 500;
       return res.end("Internal Server Error");
     }

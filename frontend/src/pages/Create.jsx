@@ -1,18 +1,17 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchPostMovie } from "../redux/slice/MovieSlice";
 import { Link, useNavigate } from "react-router-dom";
 
 const Create = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    title: "",
-    genre: [],
-    rating: "",
-    year: "",
-    director: "",
-    description: "",
-  });
+  // const datas = {
+  //   title: "",
+  //   genre: [],
+  //   rating: "",
+  //   year: "",
+  //   director: "",
+  //   description: "",
+  // };
 
   const dispatch = useDispatch();
 

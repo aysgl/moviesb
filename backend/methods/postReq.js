@@ -8,8 +8,6 @@ module.exports = async (req, res) => {
   if (req.url == "/api/movies") {
     let body = await bodyParser(req);
 
-    console.log("body 1", body);
-
     if (
       !body.title ||
       !body.year ||
@@ -22,7 +20,6 @@ module.exports = async (req, res) => {
       return;
     }
     body.id = crypto.randomUUID();
-    console.log("body 2", body);
 
     const data = JSON.parse(fs.readFileSync(filePath));
     data.movies.push(body);

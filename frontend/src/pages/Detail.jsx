@@ -46,15 +46,17 @@ const Detail = () => {
                     <p className="leading-none mb-10 text-2xl font-light">
                       {movie.director}
                     </p>
-                    {/* <div className="my-2">
-                      {movie?.genre.map((genre, index) => (
-                        <span
-                          key={index}
-                          className={`me-1 mb-1 items-center bg-${randomColor}-50 px-2 py-1 text-xs font-medium text-${randomColor}-700`}>
-                          {genre}
-                        </span>
-                      ))}
-                    </div> */}
+                    <div className="my-2">
+                      {movie &&
+                        movie.length > 0 &&
+                        movie?.genre.map((genre, index) => (
+                          <span
+                            key={index}
+                            className={`me-1 mb-1 items-center bg-${randomColor}-50 px-2 py-1 text-xs font-medium text-${randomColor}-700`}>
+                            {genre}
+                          </span>
+                        ))}
+                    </div>
                   </div>
                 </div>
                 <div className="my-10">
