@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
       !body.director ||
       !body.rating
     ) {
-      res.statusCode = 400;
+      res.statusCode = 404;
       res.end("Missing required fields");
       return;
     }
