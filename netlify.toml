@@ -1,0 +1,4 @@
+[build]
+  base = "frontend"
+  publish = "frontend/build" # veya "frontend/dist" (kullandığınız build klasörüne göre)
+  command = "npm run build"
