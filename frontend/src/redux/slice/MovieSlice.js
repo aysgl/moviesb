@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import API from "../api";
 
 const initialState = {
   movie: [],
@@ -30,7 +31,8 @@ export const movieSlice = createSlice({
 
 export const fetchMovie = (id) => async (dispatch) => {
   try {
-    const response = await axios.get(`http://localhost:8080/api/movies/${id}`);
+    const response = await axios.get(`${API}/movies/${id}`);
+    // const response = await axios.get(`http://localhost:8080/api/movies/${id}`);
     dispatch(setMovie(response.data));
   } catch (error) {
     dispatch(setError(error.message));
@@ -39,7 +41,8 @@ export const fetchMovie = (id) => async (dispatch) => {
 
 export const fetchPostMovie = (data) => async (dispatch) => {
   try {
-    const response = await axios.post(`http://localhost:8080/api/movies`, data);
+    const response = await axios.post(`${API}/movies`, data);
+    // const response = await axios.post(`http://localhost:8080/api/movies`, data);
     dispatch(postMovie(response.data));
   } catch (error) {
     dispatch(setError(error.message));
@@ -48,9 +51,10 @@ export const fetchPostMovie = (data) => async (dispatch) => {
 
 export const fetchDeleteMovie = (id) => async (dispatch) => {
   try {
-    const response = await axios.delete(
-      `http://localhost:8080/api/movies/${id}`
-    );
+    const response = await axios.delete(`${API}/movies/${id}`);
+    // const response = await axios.delete(
+    //   `http://localhost:8080/api/movies/${id}`
+    // );
     dispatch(deleteMovie(response.data));
   } catch (error) {
     dispatch(setError(error.message));

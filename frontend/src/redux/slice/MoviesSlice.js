@@ -22,7 +22,7 @@ export const moviesSlice = createSlice({
 
 export const fetchMovies = () => async (dispatch) => {
   try {
-    const response = await axios.get("http://localhost:8080/api/movies");
+    const response = await axios.get("http://localhost:8888/api/movies");
     dispatch(setMovies(response.data.movies));
   } catch (error) {
     dispatch(setError(error));

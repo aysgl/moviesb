@@ -2,31 +2,22 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = (req, res) => {
-  const filePath = path.join(__dirname, "../data/movies.json");
-  const id = req.url.split("/")[3];
+  try {
+    const filePath = path.join(__dirname, "../data/movies.json");
+    const id = req.params.id; // Express route parameter
 
-  if (req.url.startsWith("/api/movies") && id) {
-    try {
-      const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-      const foundIndex = data.movies.findIndex((m) => m.id == id);
+    const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+    const foundIndex = data.movies.findIndex((m) => m.id == id);
 
-      if (foundIndex === -1) {
-        res.statusCode = 404;
-        return res.end("Movie not found");
-      }
-      data.movies.splice(foundIndex, 1);
-
-      fs.writeFileSync(filePath, JSON.stringify(data));
-      res.statusCode = 204;
-
-      res.setHeader("Content-Type", "application/json");
-      return res.end(JSON.stringify(data.movies));
-    } catch (error) {
-      res.statusCode = 500;
-      return res.end("Internal Server Error");
+    if (foundIndex === -1) {
+      return res.status(404).json({ error: "Movie not found" });
     }
-  } else {
-    res.statusCode = 404;
-    return res.end("Not Found");
+
+    data.movies.splice(foundIndex, 1);
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+
+    res.status(200).json(data.movies);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
