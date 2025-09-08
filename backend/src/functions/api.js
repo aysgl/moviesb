@@ -1,33 +1,44 @@
-const express = require('express');
-const serverless = require('serverless-http');
-const cors = require('cors');
+const express = require('express')
+const serverless = require('serverless-http')
+const cors = require('cors')
 
-const app = express();
-const PORT = process.env.PORT || 8888;
+const getMoviesHandler = require('../routes/getMovies')
+const getMovieByIdHandler = require('../routes/getMovieById')
+const {upload, postMovieHandler} = require('../routes/postMovie')
+const deleteMovieHandler = require('../routes/deleteMovie')
+
+const app = express()
+const PORT = process.env.PORT || 8888
+const path = require('path')
 
 // Middleware
-app.use(express.json());
-app.use(cors({
-    origin: ['http://localhost:5173', 'https://moviesaysgl.netlify.app'],
-    methods: ['GET', 'POST', 'DELETE', 'OPTIONS']
-}));
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(
+    cors({
+        origin: ['http://localhost:5173', 'https://moviesaysgl.netlify.app']
+    })
+)
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')))
 
-// Import routes
-const postReq = require("../methods/postReq");
-const deleteReq = require("../methods/deleteReq");
-const getReq = require("../methods/getReq");
+// Debug middleware
+app.use((req, res, next) => {
+    console.log('Request:', req.method, req.path)
+    next()
+})
 
 // Routes
-app.get('/api/movies', getReq);
-app.post('/api/movies', postReq);
-app.delete('/api/movies/:id', deleteReq);
+app.get('/movies', getMoviesHandler)
+app.get('/movies/:id', getMovieByIdHandler)
+app.post('/movies', upload.single('image'), postMovieHandler)
+app.delete('/movies/:id', deleteMovieHandler)
 
-// Start server if not in production
+// Local server
 if (process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-    });
+        console.log(`Server running on port ${PORT}`)
+    })
 }
 
-// Export handler for Netlify Functions
-module.exports.handler = serverless(app);
+// Serverless export
+module.exports.handler = serverless(app)
