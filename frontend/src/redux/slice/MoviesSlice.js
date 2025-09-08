@@ -1,34 +1,38 @@
-import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+// src/redux/slices/moviesSlice.js
+import {createSlice} from '@reduxjs/toolkit'
+import axios from 'axios'
+import API from '../api'
 
 const initialState = {
-  movies: [],
-  error: null,
-};
+    movies: [],
+    error: null
+}
 
 export const moviesSlice = createSlice({
-  name: "movies",
-  initialState,
-  reducers: {
-    setMovies: (state, action) => {
-      state.movies = action.payload;
-      state.error = null;
-    },
-    setError: (state, action) => {
-      state.error = action.payload;
-    },
-  },
-});
+    name: 'movies',
+    initialState,
+    reducers: {
+        setMovies: (state, action) => {
+            state.movies = action.payload
+            state.error = null
+        },
+        setError: (state, action) => {
+            state.error = action.payload
+        }
+    }
+})
 
-export const fetchMovies = () => async (dispatch) => {
-  try {
-    const response = await axios.get("http://localhost:8888/api/movies");
-    dispatch(setMovies(response.data.movies));
-  } catch (error) {
-    dispatch(setError(error));
-  }
-};
+// Async action to fetch movies
+export const fetchMovies = () => async dispatch => {
+    try {
+        const response = await axios.get(`${API}/movies`)
+        console.log(response.data)
+        dispatch(setMovies(response.data.movies))
+    } catch (error) {
+        dispatch(setError(error.response?.data?.message || error.message))
+    }
+}
 
-export const { setMovies, setError } = moviesSlice.actions;
+export const {setMovies, setError} = moviesSlice.actions
 
-export default moviesSlice.reducer;
+export default moviesSlice.reducer

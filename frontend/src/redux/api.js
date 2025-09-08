@@ -1,7 +1,3 @@
-const API = import.meta.env.PROD
-    ? 'https://moviesaysgl.netlify.app/.netlify/functions/api'
-    : 'http://localhost:8888/.netlify/functions/api';
+const API = import.meta.env.PROD ? '/api' : 'http://localhost:8888'
 
-export default API;
-
-// https://moviesaysgl.netlify
+export default API

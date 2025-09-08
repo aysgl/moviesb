@@ -36,7 +36,7 @@ const Detail = () => {
                   <div className="font-light text-6xl mb-10">
                     {movie?.title}
                   </div>
-                  <p className="text-2xl text-base mb-6">
+                  <p className="text-2xl mb-6">
                     {movie?.description}
                   </p>
                   <p>{movie?.year}</p>
