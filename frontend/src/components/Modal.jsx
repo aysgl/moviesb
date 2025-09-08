@@ -1,6 +1,7 @@
 import {useDispatch} from 'react-redux'
 import {fetchDeleteMovie} from '../redux/slice/MovieSlice'
 import {useNavigate} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const Modal = ({movie, close}) => {
     const dispatch = useDispatch()
@@ -57,7 +58,7 @@ const Modal = ({movie, close}) => {
                             <h3 className="mb-5 text-lg font-normal">
                                 Are you sure you want to delete this{' '}
                                 <span className="font-bold">
-                                    "{movie.title}"
+                                    &quot;{movie.title}&quot;
                                 </span>{' '}
                                 movie?
                             </h3>
@@ -66,7 +67,7 @@ const Modal = ({movie, close}) => {
                                 data-modal-hide="popup-modal"
                                 type="button"
                                 className="text-white bg-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-600 font-medium  text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                Yes, I'm sure
+                                Yes, I&apos;m sure
                             </button>
                             <button
                                 onClick={close}
@@ -81,6 +82,15 @@ const Modal = ({movie, close}) => {
             </div>
         </div>
     )
+}
+
+Modal.propTypes = {
+    movie: PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+            .isRequired,
+        title: PropTypes.string.isRequired
+    }).isRequired,
+    close: PropTypes.func.isRequired
 }
 
 export default Modal
