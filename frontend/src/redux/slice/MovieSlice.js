@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import axios from 'axios'
-import API from '../api'
+import API_URL from '../api'
 
 const initialState = {
     movies: [],
@@ -54,7 +54,7 @@ export const {
 export const fetchMovie = id => async dispatch => {
     dispatch(setLoading(true))
     try {
-        const res = await axios.get(`${API}/movies/${id}`)
+        const res = await axios.get(`${API_URL}/movies/${id}`)
         dispatch(setMovie(res.data))
     } catch (error) {
         dispatch(setError(error.message))
@@ -66,7 +66,7 @@ export const fetchMovie = id => async dispatch => {
 export const fetchMovies = () => async dispatch => {
     dispatch(setLoading(true))
     try {
-        const res = await axios.get(`${API}/movies`)
+        const res = await axios.get(`${API_URL}/movies`)
         dispatch(setMovies(res.data.movies))
     } catch (error) {
         dispatch(setError(error.message))
@@ -77,7 +77,7 @@ export const fetchMovies = () => async dispatch => {
 
 export const fetchPostMovie = formData => async dispatch => {
     try {
-        const response = await axios.post(`${API}/movies`, formData, {
+        const response = await axios.post(`${API_URL}/movies`, formData, {
             headers: {'Content-Type': 'multipart/form-data'}
         })
 
@@ -98,7 +98,7 @@ export const fetchPostMovie = formData => async dispatch => {
 export const fetchDeleteMovie = id => async dispatch => {
     dispatch(setLoading(true))
     try {
-        await axios.delete(`${API}/movies/${id}`)
+        await axios.delete(`${API_URL}/movies/${id}`)
         dispatch(deleteMovie(id))
     } catch (error) {
         dispatch(setError(error.response?.data?.message || error.message))

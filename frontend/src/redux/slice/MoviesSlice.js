@@ -1,7 +1,7 @@
 // src/redux/slices/moviesSlice.js
 import {createSlice} from '@reduxjs/toolkit'
 import axios from 'axios'
-import API from '../api'
+import API_URL from '../api'
 
 const initialState = {
     movies: [],
@@ -25,7 +25,7 @@ export const moviesSlice = createSlice({
 // Async action to fetch movies
 export const fetchMovies = () => async dispatch => {
     try {
-        const response = await axios.get(`${API}/movies`)
+        const response = await axios.get(`${API_URL}/movies`)
         console.log(response.data)
         dispatch(setMovies(response.data.movies))
     } catch (error) {
