@@ -21,6 +21,11 @@ app.use(
 )
 app.use('/uploads', express.static(path.join(__dirname, '../../uploads')))
 
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).send('Something broke!')
+})
+
 app.use((req, res, next) => {
     res.setHeader(
         'Cache-Control',

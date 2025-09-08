@@ -4,7 +4,6 @@
   command = "cd frontend && npm run build"
   functions = "backend/src/netlify/functions"
 
-
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/api/:splat"
@@ -12,5 +11,5 @@
 
 [[headers]]
   for = "/uploads/*"
-  [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
+[headers.values]
+  Cache-Control = "no-cache, no-store, must-revalidate"
