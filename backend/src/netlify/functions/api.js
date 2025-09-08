@@ -2,10 +2,10 @@ const express = require('express')
 const serverless = require('serverless-http')
 const cors = require('cors')
 
-const getMoviesHandler = require('../routes/getMovies')
-const getMovieByIdHandler = require('../routes/getMovieById')
-const {upload, postMovieHandler} = require('../routes/postMovie')
-const deleteMovieHandler = require('../routes/deleteMovie')
+const getMoviesHandler = require('../../routes/getMovies')
+const getMovieByIdHandler = require('../../routes/getMovieById')
+const {upload, postMovieHandler} = require('../../routes/postMovie')
+const deleteMovieHandler = require('../../routes/deleteMovie')
 
 const app = express()
 const PORT = process.env.PORT || 8888
@@ -19,7 +19,7 @@ app.use(
         origin: ['http://localhost:5173', 'https://moviesaysgl.netlify.app']
     })
 )
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')))
+app.use('/uploads', express.static(path.join(__dirname, '../../uploads')))
 
 app.use((req, res, next) => {
     res.setHeader(
