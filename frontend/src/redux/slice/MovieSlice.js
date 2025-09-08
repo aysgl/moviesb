@@ -54,7 +54,7 @@ export const {
 export const fetchMovie = id => async dispatch => {
     dispatch(setLoading(true))
     try {
-        const res = await axios.get(`${API}/movies/${id}`)
+        const res = await axios.get(`${API}/movies/${id}?t=${Date.now()}`)
         dispatch(setMovie(res.data))
     } catch (error) {
         dispatch(setError(error.message))
@@ -66,7 +66,7 @@ export const fetchMovie = id => async dispatch => {
 export const fetchMovies = () => async dispatch => {
     dispatch(setLoading(true))
     try {
-        const res = await axios.get(`${API}/movies`)
+        const res = await axios.get(`${API}/movies?t=${Date.now()}`)
         dispatch(setMovies(res.data.movies))
     } catch (error) {
         dispatch(setError(error.message))
@@ -77,9 +77,13 @@ export const fetchMovies = () => async dispatch => {
 
 export const fetchPostMovie = formData => async dispatch => {
     try {
-        const response = await axios.post(`${API}/movies`, formData, {
-            headers: {'Content-Type': 'multipart/form-data'}
-        })
+        const response = await axios.post(
+            `${API}/movies?t=${Date.now()}`,
+            formData,
+            {
+                headers: {'Content-Type': 'multipart/form-data'}
+            }
+        )
 
         // FormData içeriğini görmek için:
         for (let [key, value] of formData.entries()) {
@@ -98,7 +102,7 @@ export const fetchPostMovie = formData => async dispatch => {
 export const fetchDeleteMovie = id => async dispatch => {
     dispatch(setLoading(true))
     try {
-        await axios.delete(`${API}/movies/${id}`)
+        await axios.delete(`${API}/movies/${id}?t=${Date.now()}`)
         dispatch(deleteMovie(id))
     } catch (error) {
         dispatch(setError(error.response?.data?.message || error.message))
