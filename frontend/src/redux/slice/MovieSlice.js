@@ -54,7 +54,9 @@ export const {
 export const fetchMovie = id => async dispatch => {
     dispatch(setLoading(true))
     try {
-        const res = await axios.get(`${API_URL}/movies/${id}`)
+        const res = await axios.get(`${API_URL}/movies/${id}`, {
+            headers: {'Cache-Control': 'no-cache'}
+        })
         dispatch(setMovie(res.data))
     } catch (error) {
         dispatch(setError(error.message))
@@ -66,7 +68,9 @@ export const fetchMovie = id => async dispatch => {
 export const fetchMovies = () => async dispatch => {
     dispatch(setLoading(true))
     try {
-        const res = await axios.get(`${API_URL}/movies`)
+        const res = await axios.get(`${API_URL}/movies`, {
+            headers: {'Cache-Control': 'no-cache'}
+        })
         dispatch(setMovies(res.data.movies))
     } catch (error) {
         dispatch(setError(error.message))
@@ -78,7 +82,10 @@ export const fetchMovies = () => async dispatch => {
 export const fetchPostMovie = formData => async dispatch => {
     try {
         const response = await axios.post(`${API_URL}/movies`, formData, {
-            headers: {'Content-Type': 'multipart/form-data'}
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Cache-Control': 'no-cache'
+            }
         })
 
         // FormData içeriğini görmek için:
@@ -98,7 +105,9 @@ export const fetchPostMovie = formData => async dispatch => {
 export const fetchDeleteMovie = id => async dispatch => {
     dispatch(setLoading(true))
     try {
-        await axios.delete(`${API_URL}/movies/${id}`)
+        await axios.delete(`${API_URL}/movies/${id}`, {
+            headers: {'Cache-Control': 'no-cache'}
+        })
         dispatch(deleteMovie(id))
     } catch (error) {
         dispatch(setError(error.response?.data?.message || error.message))
