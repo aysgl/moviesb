@@ -21,9 +21,14 @@ app.use(
 )
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')))
 
-// Debug middleware
 app.use((req, res, next) => {
-    console.log('Request:', req.method, req.path)
+    res.setHeader(
+        'Cache-Control',
+        'no-store, no-cache, must-revalidate, proxy-revalidate'
+    )
+    res.setHeader('Pragma', 'no-cache')
+    res.setHeader('Expires', '0')
+    res.setHeader('Surrogate-Control', 'no-store')
     next()
 })
 
