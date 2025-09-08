@@ -25,7 +25,7 @@ export const moviesSlice = createSlice({
 // Async action to fetch movies
 export const fetchMovies = () => async dispatch => {
     try {
-        const response = await axios.get(`${API}/movies?t=${Date.now()}`)
+        const response = await axios.get(`${API}/movies`)
         console.log(response.data)
         dispatch(setMovies(response.data.movies))
     } catch (error) {
