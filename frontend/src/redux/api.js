@@ -1,6 +1,6 @@
 // const API = import.meta.env.PROD ? '/api' : 'http://localhost:8888'
 const API_URL =
-    import.meta.env.MODE === 'development'
+    import.meta.env.PROD === 'development'
         ? 'http://localhost:8888'
         : '/.netlify/functions/api'
 
