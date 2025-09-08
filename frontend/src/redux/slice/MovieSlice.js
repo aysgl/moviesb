@@ -1,7 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import axios from 'axios'
-
-const API = 'http://localhost:8888'
+import API from '../api'
 
 const initialState = {
     movies: [],
